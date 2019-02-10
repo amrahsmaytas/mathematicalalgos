@@ -1,0 +1,10 @@
+Enter the number of data-points:
+3
+Enter the x data-points:
+1 2
+3
+Enter the y data-points:
+2 3 4
+Enter the value of x for which you want the interpolated value of y(x):
+3
+The interpolated value is : 4 

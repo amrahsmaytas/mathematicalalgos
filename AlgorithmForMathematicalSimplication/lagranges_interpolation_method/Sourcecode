@@ -1,0 +1,53 @@
+/**********************************
+******LAGRANGE INTERPOLATION*******
+**********************************/
+#include<stdio.h>
+#include<iostream>
+//#include<conio.h>
+
+/*Function to evaluate Li(x)*/
+
+double Li(int i,int n,double x[],double X){
+	int j;
+	double prod=1;
+    for(j=0;j<=n;j++){
+        if(j!=i)
+        	prod=prod*(X-x[j])/(x[i]-x[j]);
+	}
+        return prod;
+}
+
+/*Function to evaluate Pn(x) where Pn is the Lagrange interpolating polynomial of degree n*/
+
+double Pn(int n, double x[], double y[], double X){
+	double sum=0;
+	int i;
+    for(i=0;i<=n;i++){
+        sum=sum+Li(i,n,x,X)*y[i];
+    }
+    return sum;
+}
+using namespace std;
+int main(){
+	int i,n;  //n is the degree
+	cout << "Enter the number of data-points:\n";
+	cin >> n;  //no. of data-points is n+1
+	n = n-1;
+	//Arrays to store the (n+1) x and y data-points of size n+1
+	double x[n+1];
+	double y[n+1];
+	cout<<"Enter the x data-points:\n";
+	for(i=0;i<n+1;i++){
+		cin>>x[i];
+	}
+	
+	cout<<"Enter the y data-points:\n";
+	for(i=0;i<n+1;i++){
+		cin>>y[i];
+	}
+	
+	double X;  //value of x for which interpolated value is required
+	cout<<"Enter the value of x for which you want the interpolated value of y(x):\n";
+	cin>>X;
+	cout<<"The interpolated value is : " << Pn(n,x,y,X);
+}
